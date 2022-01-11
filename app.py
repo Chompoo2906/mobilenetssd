@@ -149,13 +149,13 @@ def event_handle(event):
 
     if msgType == "text":
         msg = str(event["message"]["text"])
-        if (msg == "มีแฟนยัง"):
+        if (msg == "มีแฟนยัง") :
             replyObj = TextSendMessage(text="จะรู้หรอ โสด")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif (msg == "ว่างไหม"):
+        elif (msg == "ว่างไหม") :
             replyObj = TextSendMessage(text="ก็ว่างอยู่หรอก")
             line_bot_api.reply_message(rtoken, replyObj)
-        elif (msg == "หิวข้าว"):
+        elif (msg == "หิวข้าว") :
             replyObj = TextSendMessage(text="ก็กินสิ่")
             line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "covid":
