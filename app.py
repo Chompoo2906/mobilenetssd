@@ -151,13 +151,13 @@ def event_handle(event):
         msg = str(event["message"]["text"])
         if (msg == "มีแฟนยัง"):
             replyObj = TextSendMessage(text="จะรู้หรอ โสด")
-               line_bot_api.reply_message(rtoken, replyObj)
+            line_bot_api.reply_message(rtoken, replyObj)
         elif (msg == "ว่างไหม"):
             replyObj = TextSendMessage(text="ก็ว่างอยู่หรอก")
-               line_bot_api.reply_message(rtoken, replyObj)
+            line_bot_api.reply_message(rtoken, replyObj)
         elif (msg == "หิวข้าว"):
             replyObj = TextSendMessage(text="ก็กินสิ่")
-               line_bot_api.reply_message(rtoken, replyObj)
+            line_bot_api.reply_message(rtoken, replyObj)
         elif msg == "covid":
             url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
             response = requests.get(url)
