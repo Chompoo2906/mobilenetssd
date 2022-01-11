@@ -151,13 +151,25 @@ def event_handle(event):
         msg = str(event["message"]["text"])
         if (msg == "มีแฟนยัง"):
             replyObj = TextSendMessage(text="จะรู้หรอ โสด")
+               line_bot_api.reply_message(rtoken, replyObj)
         elif (msg == "ว่างไหม"):
             replyObj = TextSendMessage(text="ก็ว่างอยู่หรอก")
+               line_bot_api.reply_message(rtoken, replyObj)
         elif (msg == "หิวข้าว"):
             replyObj = TextSendMessage(text="ก็กินสิ่")
+               line_bot_api.reply_message(rtoken, replyObj)
+        elif msg == "covid":
+            url = "https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"
+            response = requests.get(url)
+            response = response.json()
+            replyObj = TextSendMessage(text=str(response))
+            line_bot_api.reply_message(rtoken, replyObj)
         else :
-            replyObj = TextSendMessage(text=msg)
-        line_bot_api.reply_message(rtoken, replyObj)
+            headers = request.headers
+            json_headers = ({k:v for k, v in headers.items()})
+            json_headers.update({'Host':'bots.dialogflow.com'})
+            url = "https://dialogflow.cloud.google.com/v1/integrations/line/webhook/5ab315bb-c33b-47ab-aada-7434c428a5ba"
+            requests.post(url,data=json_line, headers=json_headers)
     elif msgType == "image":
         try:
             message_content = line_bot_api.get_message_content(event['message']['id'])
